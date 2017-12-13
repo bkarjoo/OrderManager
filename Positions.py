@@ -16,6 +16,18 @@ class Positions(object):
             else:
                 p = Position(symbol)
                 self.dict[symbol] = p
+                return p
+
+    def __str__(self):
+        s = ''
+        i = 0
+        with self.lock:
+            for key, val in self.dict.iteritems():
+                s += '{}. {} {} {}\n'.format(
+                    i, val.qty, key, val.dollar_value()
+                )
+                i = i + 1
+        return s
 
     def __len__(self):
         return len(self.dict)

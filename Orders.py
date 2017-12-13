@@ -34,3 +34,22 @@ class Orders(object):
             print self.orders_by_parent
         with self.by_id_lock:
             print self.orders_by_id
+
+    def __str__(self):
+        s = ''
+        with self.by_parent_lock:
+            i = 0
+            for key, val in self.orders_by_parent.iteritems():
+                s += '{}. acct={} symb={} side={} qty ={} price={} exec_qty={} stat={} leaves={}\n'.format(
+                    i,
+                    self.account,
+                    self.symbol,
+                    self.side,
+                    self.quantity,
+                    self.order_price,
+                    self.executed_quantity,
+                    self.status,
+                    self.leaves_qty
+                )
+                i += 1
+        return s
