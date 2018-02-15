@@ -6,6 +6,9 @@ class OrderFactory(object):
     def generate_limit_order(self, qty, symbol, price, acct):
         pass
 
+    def generate_limit_nite_order(self, qty, symbol, price, acct):
+        pass
+
     def generate_opg_market_order(self, qty, symbol, acct):
         pass
 
